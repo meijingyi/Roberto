@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>用户注册</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="/static/css/city-picker.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/css/form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<header class="header-area">
+
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_phone"></i> <span>15154111656</span></a>
+                        <a href="#"><i class="icon_mail"></i> <span>1021778588@qq.com</span></a>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <!-- Top Social Area -->
+                        <div class="top-social-area ml-auto">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="robertoNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href={{ url_for('index') }}><img src="/static/img/core-img/logo.png"
+                                                                          alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href={{ url_for('apartment.apart') }}>可选公寓</a></li>
+                                <li><a href={{ url_for('guest.login') }}>用户登陆</a></li>
+                                <li><a href={{ url_for('admin.login') }}>管理员登陆</a></li>
+                                <li><a href={{ url_for('agent.login') }}>房屋代理人登陆</a></li>
+                                <li><a href={{ url_for('guest.feature') }}>用户个人信息</a></li>
+                                <li><a href={{ url_for('guest.logout') }}>用户登出</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="py-5 text-center">
+        {#    <img class="d-block mx-auto mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">#}
+        <h2>用户注册</h2>
+        <p class="lead">请您认真填写以下信息</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">基本信息</h4>
+            <form class="needs-validation" action="{{ url_for('guest.postregister') }}" method="post" novalidate>
+                <div class="mb-3">
+                    <label for="guest_username">用户名</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="guest_username"  name="guest_username" placeholder="请设置一个用户名" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请设置一个用户名
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="guest_pw">密码</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="guest_pw" name="guest_pw" placeholder="请输入密码" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请设置您的密码
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="guest_name">真实姓名</label>
+{#                    <div class="input-group">#}
+                        <input type="text" class="form-control" id="guest_name" name="guest_name" placeholder="请输入真实姓名" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请输入您的真实姓名！
+                        </div>
+{#                    </div>#}
+                </div>
+                <div class="mb-3">
+                    <label for="gender">性别</label>
+                    <select name="gender" id="adults" class="form-control" required>
+                        <option value="1">男</option>
+                        <option value="0">女</option>
+                    </select>
+                    <div class="invalid-feedback">
+                            请选择您的性别
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="job">职业</label>
+                    <input type="text" class="form-control" id="job" name="job" required>
+                    <div class="invalid-feedback">
+                            请输入您的职业
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="guest_phone">电话号</label>
+                    <input type="text" class="form-control" id="guest_phone" name="guest_phone" required>
+                    <div class="invalid-feedback">
+                            请输入您的电话号码
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="wechat"> 微信<span class="text-muted">(选填)</span></label>
+                    <input type="text" class="form-control" id="wechat" name="wechat" >
+                </div>
+                <hr class="mb-4">
+                <h4 class="mb-3">教育信息</h4>
+                <div class="mb-3">
+                    <label for="graduate_school">毕业院校（大学）</label>
+                    <input type="text" class="form-control" id="graduate_school" name="graduate_school"  required>
+                    <div class="invalid-feedback">
+                            请输入您的毕业院校
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="major">专业</label>
+                    <input type="text" class="form-control" id="major" name="major" required>
+                    <div class="invalid-feedback">
+                            请输入您的专业
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <h4 class="mb-3">个人标签</h4>
+                <div class="row ">
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="read" name="read" value="读书">
+                    <label class="custom-control-label" for="read">读书</label>
+                    </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="music" name="music" value="音乐">
+                    <label class="custom-control-label" for="music">音乐</label>
+                </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="movie" name="movie" value="电影">
+                    <label class="custom-control-label" for="movie">电影</label>
+                    </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="talkshow" name="talkshow" value="综艺爱好者">
+                    <label class="custom-control-label" for="talkshow">综艺爱好者</label>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="fashion" name="fashion" value="时尚">
+                    <label class="custom-control-label" for="fashion">时尚</label>
+                </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="weibo" name="weibo" value="微博">
+                    <label class="custom-control-label" for="weibo">微博达人</label>
+                </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="zhihu" name="zhihu" value="知乎">
+                    <label class="custom-control-label" for="zhihu">知乎玩家</label>
+                </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="food" name="food" value="美食爱好者">
+                    <label class="custom-control-label" for="food">美食爱好者</label>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="healthy" name="healthy" value="健身运动">
+                    <label class="custom-control-label" for="healthy">健身运动</label>
+                </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="paint" name="paint" value="绘画">
+                    <label class="custom-control-label" for="paint">绘画</label>
+                </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="drama" name="drama" value="戏剧">
+                    <label class="custom-control-label" for="drama">戏剧</label>
+                </div>
+                    <div class="custom-control custom-checkbox col-4 col-md-4 col-lg-3">
+                    <input type="checkbox" class="custom-control-input" id="game" name="game" value="游戏大神">
+                    <label class="custom-control-label" for="game">游戏大神</label>
+                </div>
+                </div>
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2019 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+<script src="/static/js/jquery-3.3.1.slim.min.js"></script>
+<script>window.jQuery || document.write('<script src="/static/js/jquery-3.3.1.slim.min.js"><\/script>')</script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/form-validation.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<!-- Popper -->
+<script src="/static/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- All Plugins -->
+<script src="/static/js/roberto.bundle.js"></script>
+<!-- Active -->
+<script src="/static/js/default-assets/active.js"></script>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/city-picker.data.js"></script>
+<script src="/static/js/city-picker.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>

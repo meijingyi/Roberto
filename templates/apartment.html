@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>公寓</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/img/core-img/favicon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="/static/css/city-picker.css" rel="stylesheet" type="text/css"/>
+
+
+</head>
+
+<body id="body">
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- /Preloader -->
+
+<!-- Header Area Start -->
+<header class="header-area">
+
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_phone"></i> <span>15154111656</span></a>
+                        <a href="#"><i class="icon_mail"></i> <span>1021778588@qq.com</span></a>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <!-- Top Social Area -->
+                        <div class="top-social-area ml-auto">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="robertoNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href={{ url_for('index') }}><img src="/static/img/core-img/logo.png"
+                                                                          alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href={{ url_for('apartment.apart') }}>可选公寓</a></li>
+                                <li><a href={{ url_for('guest.login') }}>用户登陆</a></li>
+                                <li><a href={{ url_for('admin.login') }}>管理员登陆</a></li>
+                                <li><a href={{ url_for('agent.login') }}>房屋代理人登陆</a></li>
+                                <li><a href={{ url_for('guest.feature') }}>用户个人信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header Area End -->
+
+<!-- Breadcrumb Area Start -->
+<div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(/static/img/bg-img/16.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcrumb-content text-center">
+                    <h2 class="page-title">可选公寓</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="index.html">主页</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">可选公寓</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End -->
+
+<!-- Rooms Area Start -->
+<div class="roberto-rooms-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <!-- Single Room Area -->
+            {% for item in result %}
+                <!-- Single Room Area -->
+                <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
+                    <!-- Room Thumbnail -->
+                    <div class="room-thumbnail">
+                        <img src="{{ item['pic_url'] }}" alt="">
+                    </div>
+                    <!-- Room Content -->
+                    <div class="room-content">
+                        <h2>{{ item['apt_name'] }}</h2>
+                        <h4>{{ item['price'] }}￥ <span>/ 月</span></h4>
+                        <div class="room-feature">
+                            <h6>面积: <span>{{ item['room_area']}} 平方米</span></h6>
+                            <h6>容纳人数: <span>{{ item['max_people_number'] }}</span></h6>
+                            <h6>卧室数量: <span>{{ item['bathroom_count'] }}</span></h6>
+                            <h6>卫生间数量: <span>{{ item['bedroom_count'] }}</span></h6>
+                        </div>
+                        <a href="{{ url_for('apartment.detail',apt_id = item['apt_id']) }}" class="btn view-detail-btn" methods="GET">查看详情<i class="fa fa-long-arrow-right"
+                                                                                aria-hidden="true"></i></a>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+                <!-- Pagination -->
+{#                <nav class="roberto-pagination wow fadeInUp mb-100" data-wow-delay="1000ms">#}
+{#                    <ul class="pagination">#}
+{#                        <li class="page-item"><a class="page-link" href="#">1</a></li>#}
+{#                        <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+{#                        <li class="page-item"><a class="page-link" href="#">3</a></li>#}
+{#                        <li class="page-item"><a class="page-link" href="#">Next <i class="fa fa-angle-right"></i></a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </nav>#}
+            </div>
+
+            <div class="col-12 col-lg-4" id="test_price2">
+                <!-- Hotel Reservation Area -->
+                <div class="hotel-reservation--area mb-100">
+                    <form action="{{ url_for('apartment.find') }}" method="post" >
+                        <div class="form-group mb-30">
+                            <label for="place">地点</label>
+{#                                    <form class="form-inline">#}
+                                        <div id="distpicker">
+                                            <div class="form-group">
+                                                <div style="position: relative;">
+                                                    <input id="city-picker3" class="form-control" readonly type="text"
+                                                           value="上海市/上海市/普陀区" name="place" data-toggle="city-picker">
+                                                </div>
+                                            </div>
+                                        </div>
+{#                                    </form>#}
+                        </div>
+                        <div class="form-group mb-30">
+                            <label for="room">面积</label>
+                            <div class="row">
+                                <div class="col-6">
+                            <select name="room" id="room" class="form-control">
+                                <option value="0">不限</option>
+                                <option value="50">50-70</option>
+                                <option value="70">70-90</option>
+                                <option value="90">90-100</option>
+                                <option value="100">100-120</option>
+                                <option value="120">120-140</option>
+                                <option value="140">140+</option>
+                            </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-30">
+                            <label for="guests">住房人数</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <select name="adults" id="guests" class="form-control">
+                                        <option value="-1">不限</option>
+                                        <option value="01">01</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-50" id="test_price">
+                            <div class="slider-range">
+                                <div class="range-price" id="important">价格区间: ￥0 - ￥8000</div>
+                                <div id="mei" data-min="0" data-max="8000" data-unit="￥"
+                                     class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                                     data-value-min="0" data-value-max="8000" data-label-result="价格区间："  name="mei" >
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all" name="range"></div>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="5" name="min"></span>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="10" name="max"></span>
+                                    <input type="hidden" id="min" name="min" value="123" />
+                                    <input type="hidden" id="max" name="max" value="123" />
+                                    <input type="hidden" id="hugo" name="hugo" value="￥0 - ￥8000" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="find" class="btn roberto-btn w-100">查找</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Rooms Area End -->
+
+
+<!-- Partner Area Start -->
+<div class="partner-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="partner-logo-content d-flex align-items-center justify-content-between wow fadeInUp"
+                     data-wow-delay="300ms">
+                    <!-- Single Partner Logo -->
+                    <a href="#" class="partner-logo"><img src="/static/img/core-img/p1.png" alt=""></a>
+                    <!-- Single Partner Logo -->
+                    <a href="#" class="partner-logo"><img src="/static/img/core-img/p2.png" alt=""></a>
+                    <!-- Single Partner Logo -->
+                    <a href="#" class="partner-logo"><img src="/static/img/core-img/p3.png" alt=""></a>
+                    <!-- Single Partner Logo -->
+                    <a href="#" class="partner-logo"><img src="/static/img/core-img/p4.png" alt=""></a>
+                    <!-- Single Partner Logo -->
+                    <a href="#" class="partner-logo"><img src="/static/img/core-img/p5.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Partner Area End -->
+
+<!-- Footer Area Start -->
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017-2019 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+<!-- Footer Area End -->
+
+<!-- **** All JS Files ***** -->
+<!-- jQuery 2.2.4 -->
+<script src="/static/js/jquery.min.js"></script>
+<!-- Popper -->
+<script src="/static/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- All Plugins -->
+<script src="/static/js/roberto.bundle.js"></script>
+<!-- Active -->
+<script src="/static/js/default-assets/active.js"></script>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/city-picker.data.js"></script>
+<script src="/static/js/city-picker.js"></script>
+<script src="/static/js/main.js"></script>
+{#<script type="text/javascript">#}
+{#$(document).ready(function(){#}
+{#    $('body').click(function () {#}
+        {#var price = $("div[id = 'mei']")#}
+{#        var v = $("input[id ='max']").attr('value')#}
+{#        console.log(v)#}
+{#    }#}
+{##}
+{#    );#}
+{#  $("price").blur(function(){#}
+{#      var price = $('price');#}
+{#    var min = price.attr("data-value-min");#}
+{#    console.log("###########")#}
+{#    console.log(min)#}
+{#    $('min').attr("value",min);#}
+{#      var max = price.attr("data-value-max");#}
+{#      $('max').attr("value",max)#}
+{#  });#}
+{#});#}
+{#</script>#}
+</body>
+
+</html>

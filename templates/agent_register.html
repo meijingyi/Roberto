@@ -1,0 +1,255 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#<meta charset="utf-8">#}
+{#</head>#}
+{#<body>#}
+{#    <legend>用户登陆系统</legend>#}
+{#  <form action="{{url_for('guest.postregister')}}" method="post">#}
+{#	<div class = "form-group">#}
+{#    用户名：<input id= "guest_username" name= "guest_username" type="text">#}
+{#	</div>#}
+{#	<div class = "form-group">#}
+{#    密码: <input id="guest_pw" name = "guest_pw" type="text">#}
+{#	</div>#}
+{#	<div class = "form-group">#}
+{#    真实姓名: <input id="guest_name" name = "guest_name" type="text">#}
+{#	</div>#}
+{#	<div class = "form-group">#}
+{#	生日: <input id="birthday" name = "birthday" type="text">#}
+{#	</div>	#}
+{#	<div class = "form-group">#}
+{#    性别: <input id="gender" name = "gender" type="text">#}
+{#	</div>	#}
+{#	<div class = "form-group">#}
+{#    工作: <input id="job" name = "job" type="text">#}
+{#	</div>#}
+{#	<div class = "form-group">#}
+{#    微信: <input id="wechat" name = "wechat" type="text">#}
+{#	</div>	#}
+{#	<div class = "form-group">#}
+{#    电话号码: <input id="guest_phone" name = "guest_phone" type="text">#}
+{#	</div>#}
+{#	<div class = "form-group">#}
+{#    毕业院校: <input id="graduate_school" name = "graduate_school" type="text">#}
+{#	</div>#}
+{#	<div class = "form-group">#}
+{#    专业: <input id="major" name = "major" type="text">#}
+{#	</div>#}
+{#    <button type="submit" value="注册" >确定</button>#}
+{#  </form>#}
+{#</body>#}
+{#</html>#}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>用户注册</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="/static/css/city-picker.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/css/form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<header class="header-area">
+
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_phone"></i> <span>15154111656</span></a>
+                        <a href="#"><i class="icon_mail"></i> <span>1021778588@qq.com</span></a>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <!-- Top Social Area -->
+                        <div class="top-social-area ml-auto">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="robertoNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href={{ url_for('index') }}><img src="/static/img/core-img/logo.png"
+                                                                          alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href={{ url_for('apartment.apart') }}>可选公寓</a></li>
+                                <li><a href={{ url_for('guest.login') }}>用户登陆</a></li>
+                                <li><a href={{ url_for('admin.login') }}>管理员登陆</a></li>
+                                <li><a href={{ url_for('agent.login') }}>房屋代理人登陆</a></li>
+                                <li><a href={{ url_for('guest.feature') }}>用户个人信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+
+    {% block page_content %}{% endblock %}
+</div>
+
+<div class="container">
+    <div class="py-5 text-center">
+        {#    <img class="d-block mx-auto mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">#}
+        <h2>房屋代理人注册</h2>
+        <p class="lead">请您认真填写以下信息</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">基本信息</h4>
+            <form class="needs-validation" action="{{ url_for('agent.postregister') }}" method="post" novalidate>
+                <div class="mb-3">
+                    <label for="agent_username">用户名</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="agent_username"  name="agent_username" placeholder="请设置一个用户名" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请设置一个用户名
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="agent_pw">密码</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="agent_pw" name="agent_pw" placeholder="请输入密码" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请设置您的密码
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="agent_name">真实姓名</label>
+{#                    <div class="input-group">#}
+                        <input type="text" class="form-control" id="agent_name" name="agent_name" placeholder="请输入真实姓名" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请输入您的真实姓名！
+                        </div>
+{#                    </div>#}
+                </div>
+                <div class="mb-3">
+                    <label for="agent_phone">电话号</label>
+                    <input type="text" class="form-control" id="agent_phone" name="agent_phone" required>
+                    <div class="invalid-feedback">
+                            请输入您的电话号码
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="agent_company">公司</label>
+                    <input type="text" class="form-control" id="agent_company" name="agent_company" >
+                </div>
+                <div class="mb-3">
+                    <label for="agent_wechat"> 微信</label>
+                    <input type="text" class="form-control" id="agent_wechat" name="agent_wechat" >
+                </div>
+
+                <hr class="mb-4">
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2019 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+<script src="/static/js/jquery-3.3.1.slim.min.js"></script>
+<script>window.jQuery || document.write('<script src="/static/js/jquery-3.3.1.slim.min.js"><\/script>')</script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/form-validation.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<!-- Popper -->
+<script src="/static/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- All Plugins -->
+<script src="/static/js/roberto.bundle.js"></script>
+<!-- Active -->
+<script src="/static/js/default-assets/active.js"></script>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/city-picker.data.js"></script>
+<script src="/static/js/city-picker.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>

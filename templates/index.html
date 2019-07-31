@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Roberto</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/img/core-img/favicon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="/static/css/city-picker.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- /Preloader -->
+
+<!-- Header Area Start -->
+<header class="header-area">
+
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_phone"></i> <span>15154111656</span></a>
+                        <a href="#"><i class="icon_mail"></i> <span>1021778588@qq.com</span></a>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <!-- Top Social Area -->
+                        <div class="top-social-area ml-auto">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="robertoNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href={{ url_for('index') }}><img src="/static/img/core-img/logo.png"
+                                                                          alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href={{ url_for('apartment.apart') }}>可选公寓</a></li>
+                                <li><a href={{ url_for('guest.login') }}>用户登陆</a></li>
+                                <li><a href={{ url_for('admin.login') }}>管理员登陆</a></li>
+                                <li><a href={{ url_for('agent.login') }}>房屋代理人登陆</a></li>
+                                <li><a href={{ url_for('guest.feature') }}>用户个人信息</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header Area End -->
+
+<!-- Welcome Area Start -->
+<section class="welcome-area">
+    <div class="welcome-slides owl-carousel">
+        <!-- Single Welcome Slide -->
+        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/static/img/bg-img/16.jpg);"
+             data-img-url="/static/img/bg-img/16.jpg">
+            <!-- Welcome Content -->
+            <div class="welcome-content h-100">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <!-- Welcome Text -->
+                        <div class="col-12">
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInLeft" data-delay="200ms">Apartment</h6>
+                                <h2 data-animation="fadeInLeft" data-delay="500ms">Welcome To Roberto</h2>
+                                <a href="{{ url_for('apartment.list')}}" class="btn roberto-btn btn-2" data-animation="fadeInLeft"
+                                   data-delay="800ms">Discover Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Welcome Slide -->
+        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/static/img/bg-img/17.jpg);"
+             data-img-url="/static/img/bg-img/17.jpg">
+            <!-- Welcome Content -->
+            <div class="welcome-content h-100">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <!-- Welcome Text -->
+                        <div class="col-12">
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInUp" data-delay="200ms">公寓 &amp; 拼房</h6>
+                                <h2 data-animation="fadeInUp" data-delay="500ms">欢迎来到萝卜头</h2>
+                                <a href="{{ url_for('apartment.list')}}" class="btn roberto-btn btn-2" data-animation="fadeInUp" data-delay="800ms">发现新世界</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Welcome Slide -->
+        <div class="single-welcome-slide bg-img bg-overlay" style="background-image: url(/static/img/bg-img/18.jpg);"
+             data-img-url="/static/img/bg-img/18.jpg">
+            <!-- Welcome Content -->
+            <div class="welcome-content h-100">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <!-- Welcome Text -->
+                        <div class="col-12">
+                            <div class="welcome-text text-center">
+                                <h6 data-animation="fadeInDown" data-delay="200ms">萝卜头</h6>
+                                <h2 data-animation="fadeInDown" data-delay="500ms">你追梦的港湾</h2>
+                                <a href="{{ url_for('apartment.list')}}" class="btn roberto-btn btn-2" data-animation="fadeInDown"
+                                   data-delay="800ms">Discover Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Welcome Area End -->
+
+<!-- About Us Area Start -->
+<section class="roberto-about-area section-padding-100-0">
+    <!-- Hotel Search Form Area -->
+    <div class="hotel-search-form-area">
+        <div class="container-fluid">
+            <div class="hotel-search-form">
+                <form action="{{ url_for('apartment.findindex') }}" method="post">
+                    <div class="row justify-content-between align-items-end">
+{#                        <div class="col-6 col-md-2 col-lg-3">#}
+{#                            <label for="checkIn">Check In</label>#}
+{#                            <input type="date" class="form-control" id="checkIn" name="checkin-date">#}
+{#                        </div>#}
+                        <div class="col-4 col-md-4 col-lg-3">
+                            <label for="distpicker">Place</label>
+                            <div class="container">
+                                <div class="docs-methods">
+                                        <div id="distpicker">
+                                            <div class="form-group">
+                                                <div style="position: relative;">
+                                                    <input id="city-picker3" class="form-control" readonly type="text" name="place"
+                                                           value="上海市/上海市/普陀区" data-toggle="city-picker">
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+
+                            </div>
+                            {#                                <input type="date" class="form-control" id="checkOut" name="checkout-date">#}
+                        </div>
+                        <div class="col-4 col-md-2">
+                            <label for="room">Area</label>
+                            <select name="room" id="room" class="form-control">
+                                <option value="0">不限</option>
+                                <option value="50">50-70</option>
+                                <option value="70">70-90</option>
+                                <option value="90">90-100</option>
+                                <option value="100">100-120</option>
+                                <option value="120">120-140</option>
+                                <option value="140">140+</option>
+                            </select>
+                        </div>
+                        <div class="col-4 col-md-2">
+                            <label for="adults">People</label>
+                            <select name="adults" id="adults" class="form-control">
+                                <option value="-1">不限</option>
+                                <option value="0">00</option>
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <button type="submit" class="form-control btn roberto-btn w-100">立即查询</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-100">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <!-- Section Heading -->
+                <div class="section-heading wow fadeInUp" data-wow-delay="100ms">
+                    <h6>About Us</h6>
+                    <h2>Welcome to <br>Roberto</h2>
+                </div>
+                <div class="about-us-content mb-100">
+                    <h5 class="wow fadeInUp" data-wow-delay="300ms">我们专注为应届生提供优质的租房环境，为开始奋斗岁月的您提供港湾。</h5>
+{#                    <p class="wow fadeInUp" data-wow-delay="400ms">Manager: <span>Michen Taylor</span></p>#}
+                    <img src="/static/img/core-img/signature.png" alt="" class="wow fadeInUp" data-wow-delay="500ms">
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="about-us-thumbnail mb-100 wow fadeInUp" data-wow-delay="700ms">
+                    <div class="row no-gutters">
+                        <div class="col-6">
+                            <div class="single-thumb">
+                                <img src="/static/img/bg-img/43.jpg" alt="">
+                            </div>
+                            <div class="single-thumb">
+                                <img src="/static/img/bg-img/44.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="single-thumb">
+                                <img src="/static/img/bg-img/15.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Us Area End -->
+
+<!-- Service Area Start -->
+<div class="roberto-service-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="service-content d-flex align-items-center justify-content-between">
+                    <!-- Single Service Area -->
+                    <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="100ms">
+                        <img src="/static/img/core-img/icon-1.png" alt="">
+                        <h5>便捷交通</h5>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="300ms">
+                        <img src="/static/img/core-img/icon-2.png" alt="">
+                        <h5>丰富生活</h5>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="500ms">
+                        <img src="/static/img/core-img/icon-3.png" alt="">
+                        <h5>享受奋斗</h5>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="700ms">
+                        <img src="/static/img/core-img/icon-4.png" alt="">
+                        <h5>结识朋友</h5>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service--area mb-100 wow fadeInUp" data-wow-delay="900ms">
+                        <img src="/static/img/core-img/icon-1.png" alt="">
+                        <h5>助您圆梦</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service Area End -->
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017-2019 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+<!-- Footer Area End -->
+
+<!-- **** All JS Files ***** -->
+<!-- jQuery 2.2.4 -->
+<script src="/static/js/jquery.min.js"></script>
+<!-- Popper -->
+<script src="/static/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- All Plugins -->
+<script src="/static/js/roberto.bundle.js"></script>
+<!-- Active -->
+<script src="/static/js/default-assets/active.js"></script>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/city-picker.data.js"></script>
+<script src="/static/js/city-picker.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>修改房屋信息</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="/static/css/city-picker.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/css/form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<header class="header-area">
+
+    <!-- Top Header Area Start -->
+    <div class="top-header-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_phone"></i> <span>15154111656</span></a>
+                        <a href="#"><i class="icon_mail"></i> <span>1021778588@qq.com</span></a>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <!-- Top Social Area -->
+                        <div class="top-social-area ml-auto">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="robertoNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href={{ url_for('index') }}><img src="/static/img/core-img/logo.png"
+                                                                          alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href={{ url_for('agent.view_order') }}>订单信息</a></li>
+                                <li><a href={{ url_for('agent.apartment') }}>房屋信息</a></li>
+                                <li><a href={{ url_for('agent.modify') }}>代理人信息修改</a></li>
+                                <li><a href={{ url_for('agent.logout') }}>登出</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+
+    {% block page_content %}{% endblock %}
+</div>
+
+<div class="container">
+    <div class="py-5 text-center">
+        {#    <img class="d-block mx-auto mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">#}
+        <h2>修改房屋信息</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">基本信息</h4>
+            <form class="needs-validation" action="{{ url_for('agent.modify') }}" method="post" novalidate>
+                <div class="mb-3">
+                    <label for="apt_name">公寓名称</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="apt_name"  name="apt_name" value="{{ result['apt_name'] }}" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请填写公寓名称
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="bathroom_count">厕所数</label>
+{#                    <div class="input-group">#}
+                        <input type="text" class="form-control" id="bathroom_count" name="bathroom_count" value="{{ result['bathroom_count'] }}" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            请输入公寓的厕所数量！
+                        </div>
+{#                    </div>#}
+                </div>
+                <div class="mb-3">
+                    <label for="bedroom_count">卧室数</label>
+                    <input type="text" class="form-control" id="bedroom_count" name="bedroom_count" value="{{ result['bedroom_count'] }}" required>
+                    <div class="invalid-feedback">
+                            请输入公寓的卧室数量
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="room_area">面积</label>
+                    <input type="text" class="form-control" id="room_area" name="room_area" value="{{ result['room_area'] }}" required>
+                    <div class="invalid-feedback">
+                            请输入公寓的面积
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="transport">交通情况</label>
+                    <input type="text" class="form-control" id="transport" name="transport" value="{{ result['transport'] }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="max_people_number">最多居住人数</label>
+                    <input type="text" class="form-control" id="max_people_number" name="max_people_number" value="{{ result['max_people_number'] }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="price">价格</label>
+                    <input type="text" class="form-control" id="price" name="price" value="{{ result['price'] }}">
+                </div>
+                <div class="mb-3">
+                    <label for="direction">朝向</label>
+                    <input type="text" class="form-control" id="direction" value="{{ result['direction'] }}" name="direction" >
+                </div>
+                    <input type="text" class="form-control" id="apt_id" value="{{ apt_id }}" name="apt_id" hidden>
+                <div class="mb-3">
+                    <label for="pic_url">图片</label>
+                    <input type="text" class="form-control" id="pic_url" value="{{ result['pic_url'] }}" name="pic_url" >
+                </div>
+                <hr class="mb-4">
+                <h4 class="mb-3">所在小区信息</h4>
+                <div class="mb-3">
+                    <label for="building_name">小区名</label>
+                    <input type="text" class="form-control" id="building_name" value="{{ result['building_name'] }}" name="building_name" >
+                </div>
+                <div class="mb-3">
+                            <label for="distpicker">地址</label>
+                            <div class="container">
+                                <div class="docs-methods">
+                                        <div id="distpicker">
+                                            <div class="form-group">
+                                                <div style="position: relative;">
+                                                    <input id="city-picker3" class="form-control" readonly type="text" name="place"
+                                                           value="{{ result['place']}}" data-toggle="city-picker">
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+
+                            </div>
+                            {#                                <input type="date" class="form-control" id="checkOut" name="checkout-date">#}
+                        </div>
+                <div class="mb-3">
+                    <label for="building_manager">物业经理</label>
+                    <input type="text" class="form-control" id="building_manager" name="building_manager" value="{{ result['building_manager'] }}" >
+                </div>
+                <div class="mb-3">
+                    <label for="building_phone">小区电话</label>
+                    <input type="text" class="form-control" id="building_phone" name="building_phone" value="{{ result['building_phone'] }}">
+                </div>
+                <div class="mb-3">
+                    <label for="other_details">其他信息</label>
+                    <input type="text" class="form-control" id="other_details" name="other_details" value="{{ result['other_details'] }}">
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">提交修改</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2017-2019 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+<script src="/static/js/jquery-3.3.1.slim.min.js"></script>
+<script>window.jQuery || document.write('<script src="/static/js/jquery-3.3.1.slim.min.js"><\/script>')</script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/form-validation.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<!-- Popper -->
+<script src="/static/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- All Plugins -->
+<script src="/static/js/roberto.bundle.js"></script>
+<!-- Active -->
+<script src="/static/js/default-assets/active.js"></script>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/city-picker.data.js"></script>
+<script src="/static/js/city-picker.js"></script>
+<script src="/static/js/main.js"></script>
+</body>
+</html>
